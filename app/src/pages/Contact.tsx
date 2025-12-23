@@ -88,20 +88,20 @@ export const Contact: React.FC = () => {
   // Handle form submission
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    alert("Sorry — this form isn’t connected yet. Please reach out via email.");
+    // console.log("Form submitted:", formData);
   };
 
-  // Contact info: currently only email
+  // Contact info
   const contactInfo: ContactInfo[] = [
-    { icon: Mail, label: "Email", value: "your.email@example.com", href: "mailto:your.email@example.com", color: "var(--pastel-blue)" },
-    { icon: Phone, label: "Phone", value: "+1 (555) 123-4567", href: "tel:+15551234567", color: "var(--pastel-yellow)" },
-    { icon: MapPin, label: "Location", value: "San Francisco, CA", href: "#", color: "var(--pastel-pink)" },
+    { icon: Mail, label: "Email", value: "will.li.1@stonybrook.edu", href: "mailto:will.li.1@stonybrook.edu", color: "var(--pastel-blue)" },
+    // { icon: Phone, label: "Phone", value: "+1 (555) 123-4567", href: "tel:+15551234567", color: "var(--pastel-yellow)" },
+    { icon: MapPin, label: "Location", value: "New York, NY", href: "#", color: "var(--pastel-pink)" },
   ];
 
   const socialLinks: SocialLink[] = [
-    { icon: Github, href: "https://github.com", color: "var(--pastel-blue)" },
-    { icon: Linkedin, href: "https://linkedin.com", color: "var(--pastel-yellow)" },
-    { icon: Twitter, href: "https://twitter.com", color: "var(--pastel-pink)" },
+    { icon: Github, href: "https://github.com/w-lly/", color: "var(--pastel-blue)" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/will-li-e271828/", color: "var(--pastel-yellow)" },
   ];
 
   return (

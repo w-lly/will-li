@@ -56,29 +56,29 @@ const TechStack: React.FC<TechStackProps> = ({ tech, color, maxVisible }) => {
 const projects: Project[] = [
   {
     id: 1,
-    title: "AI-Powered Chatbot Platform",
+    title: "Agentic-AI-for-Insights",
     description:
-      "Enterprise-grade conversational AI with natural language understanding and multi-turn context awareness.",
+      "Agentic RAG system for 7-Eleven employees to quickly troubleshoot using internal manuals.",
     longDescription:
-      "Built a sophisticated chatbot platform using GPT-4 and custom fine-tuned models. Implemented context management, intent recognition, and multi-language support. Deployed on AWS with auto-scaling capabilities serving 100k+ users.",
-    tech: ["Python", "OpenAI API", "React", "FastAPI", "Redis", "Docker"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    stars: 234,
-    forks: 45,
+      "Built an agentic, multi-step Retrieval-Augmented Generation (RAG) system that enables store employees to query and synthesize insights from large enterprise PDF manuals using hybrid BM25 + FAISS retrieval, LangGraph-based reasoning, and a production-ready Streamlit/Hugging Face deployment.",
+    tech: ["LangGraph/LangChain", "FAISS", "SentenceTransformers", "PyMuPDF", "BGE reranker", "Streamlit", "Hugging Face Spaces"],
+    github: "https://github.com/w-lly/Agentic-AI-for-Insights",
+    demo: "https://huggingface.co/spaces/w-lly/Agentic-AI-for-Insights-App",
+    stars: 0,
+    forks: 0,
     color: "var(--pastel-blue)",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
   },
   {
     id: 2,
-    title: "Real-Time Object Detection System",
+    title: "U-mi",
     description:
-      "Computer vision pipeline for real-time object detection and tracking with custom YOLO implementation.",
+      "A React-based personal planner app for organizing tasks, groups, and schedules with drag-and-drop functionality and customizable pages.",
     longDescription:
-      "Developed a high-performance object detection system achieving 60 FPS on edge devices. Implemented custom training pipeline, data augmentation, and model optimization techniques. Used in production for security surveillance.",
-    tech: ["PyTorch", "OpenCV", "CUDA", "C++", "TensorRT"],
-    github: "https://github.com",
-    demo: "https://demo.com",
+      "Developed a customizable planning app with React, Zustand, and dnd-kit, enabling draggable task groups and objects. Built a weekly scheduling system with 15-minute time blocks, conflict detection, editable durations, and drag-and-drop placement. Implemented rich object pages with text fields, inter-object links, and file uploads for flexible personal data organization. Integrated IndexedDB via Dexie.js for offline persistence, designed a responsive Tailwind CSS interface, and added productivity tools including a to-do list manager and study timer to support task tracking and workflow organization.",
+    tech: ["React", "Vite", "Zustand", "Dexie.js", "React Router", "@dnd-kit/core", "@dnd-kit/sortable", "Tailwind CSS", "Lucide React"],
+    github: "https://github.com/w-lly/sbu_hacks_2025",
+    demo: "https://u-mi.vercel.app/",
     stars: 189,
     forks: 32,
     color: "var(--pastel-yellow)",
@@ -86,61 +86,18 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    title: "ML Analytics Dashboard",
+    title: "AI Application Helper",
     description:
-      "Full-stack platform for visualizing ML model performance with real-time metrics and predictions.",
+      "AI-powered tool that improves resumes, tailors them to job descriptions, and generates personalized cover letters using Gemini API.",
     longDescription:
-      "Created an interactive dashboard for monitoring ML models in production. Features include A/B testing, drift detection, and automated alerting. Integrated with MLflow for experiment tracking.",
-    tech: ["React", "D3.js", "Node.js", "PostgreSQL", "MLflow"],
-    github: "https://github.com",
-    demo: "https://demo.com",
+      "Built a full-stack application with FastAPI and Next.js that allows users to upload resumes (PDF/DOCX) and job descriptions to receive AI-driven improvements. Designed a responsive TailwindCSS frontend, implemented backend LLM integration via Gemini API for resume enhancement, tailoring, and cover letter generation, and handled file parsing using PyMuPDF and python-docx. Enabled real-time, role-specific content generation with a user-friendly interface.",
+    tech: ["FastAPI", "Next.js", "Tailwind CSS", "Gemini API", "PyMuPDF", "python-docx", "React", "ReactMarkdown"],
+    github: "https://github.com/w-lly/application-helper-ai",
+    demo: "https://github.com/w-lly/application-helper-ai",
     stars: 156,
     forks: 28,
     color: "var(--pastel-pink)",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
-  },
-  {
-    id: 4,
-    title: "Sentiment Analysis API",
-    description: "RESTful API for multi-language sentiment analysis using transformer models.",
-    longDescription:
-      "Built a production-ready sentiment analysis API supporting 20+ languages. Implemented custom BERT fine-tuning, batching for efficiency, and comprehensive API documentation. Handles 1M+ requests daily.",
-    tech: ["BERT", "Hugging Face", "Flask", "MongoDB", "Docker"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    stars: 312,
-    forks: 67,
-    color: "var(--pastel-blue)",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
-  },
-  {
-    id: 5,
-    title: "Recommendation Engine",
-    description: "Collaborative filtering system with deep learning for personalized recommendations.",
-    longDescription:
-      "Designed and implemented a hybrid recommendation system combining collaborative filtering and content-based approaches. Achieved 35% improvement in click-through rates. Deployed on GCP with auto-scaling.",
-    tech: ["TensorFlow", "Python", "Redis", "GCP", "Airflow"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    stars: 278,
-    forks: 53,
-    color: "var(--pastel-yellow)",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800",
-  },
-  {
-    id: 6,
-    title: "MLOps Pipeline Automation",
-    description:
-      "End-to-end automated ML pipeline with training, testing, and deployment workflows.",
-    longDescription:
-      "Built a comprehensive MLOps platform for automating the entire ML lifecycle. Features include automated data validation, model training, testing, and deployment with rollback capabilities. Reduced deployment time by 80%.",
-    tech: ["Kubernetes", "MLflow", "Airflow", "GCP", "Terraform"],
-    github: "https://github.com",
-    demo: "https://demo.com",
-    stars: 421,
-    forks: 89,
-    color: "var(--pastel-pink)",
-    image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800",
   },
 ];
 
@@ -156,14 +113,14 @@ export function Projects() {
   return (
     <div className="min-h-screen px-6 py-12 relative overflow-hidden">
       {/* Background blobs */}
-      <div
+      {/* <div
         className="absolute top-40 left-10 w-96 h-96 rounded-full opacity-10 blur-3xl"
         style={{ background: "var(--pastel-blue)" }}
       />
       <div
         className="absolute bottom-20 right-20 w-80 h-80 rounded-full opacity-10 blur-3xl"
         style={{ background: "var(--pastel-pink)" }}
-      />
+      /> */}
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}

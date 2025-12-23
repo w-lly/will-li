@@ -20,37 +20,42 @@ interface Expertise {
 // Technical skills data
 const skills: Skill[] = [
   { name: "Python", level: 95, color: "var(--pastel-blue)" },
-  { name: "JavaScript/TypeScript", level: 90, color: "var(--pastel-yellow)" },
-  { name: "TensorFlow/PyTorch", level: 88, color: "var(--pastel-pink)" },
-  { name: "React/Node.js", level: 92, color: "var(--pastel-blue)" },
-  { name: "AWS/GCP", level: 85, color: "var(--pastel-yellow)" },
-  { name: "Docker/Kubernetes", level: 80, color: "var(--pastel-pink)" },
+  { name: "Machine Learning & Data Science", level: 90, color: "var(--pastel-yellow)" },
+  { name: "PyTorch / CNNs / NLP", level: 88, color: "var(--pastel-pink)" },
+  { name: "React / Next.js", level: 90, color: "var(--pastel-blue)" },
+  { name: "FastAPI / Backend APIs", level: 85, color: "var(--pastel-yellow)" },
+  { name: "RAG Systems & LLM Pipelines", level: 85, color: "var(--pastel-pink)" },
+  { name: "OpenCV & 3D Data Processing", level: 80, color: "var(--pastel-blue)" },
 ];
 
 // Areas of expertise data
 const expertise: Expertise[] = [
   {
     icon: Brain,
-    title: "Machine Learning",
-    description: "Deep learning, NLP, computer vision, and recommendation systems",
+    title: "Machine Learning & AI",
+    description:
+      "CNNs, NLP, Gradient Boosting, K-means, RAG pipelines, LLM fine-tuning, and rigorous model evaluation with emphasis on performance and generalization.",
     color: "var(--pastel-blue)",
   },
   {
     icon: Code2,
-    title: "Full Stack Development",
-    description: "React, Node.js, Python, and modern web technologies",
+    title: "Software & Full Stack Engineering",
+    description:
+      "Designing and building scalable applications with React, Next.js, FastAPI, TailwindCSS, Zustand, and Dexie.js, focusing on clean architecture and user experience.",
     color: "var(--pastel-yellow)",
   },
   {
     icon: Database,
-    title: "Data Engineering",
-    description: "ETL pipelines, data warehousing, and big data processing",
+    title: "Data & ML Pipelines",
+    description:
+      "End-to-end data preprocessing, feature engineering, ETL workflows, computer vision pipelines, and integration of ML models into production systems.",
     color: "var(--pastel-pink)",
   },
   {
     icon: Cloud,
-    title: "Cloud Architecture",
-    description: "Scalable solutions on AWS, GCP, and Azure",
+    title: "AI-Powered Systems & Tools",
+    description:
+      "Production-ready AI systems including RAG architectures, LangGraph workflows, embedding and PDF ingestion pipelines, and deployed ML demos.",
     color: "var(--pastel-blue)",
   },
 ];
@@ -59,14 +64,14 @@ export const About: React.FC = () => {
   return (
     <div className="min-h-screen px-6 py-12 relative overflow-hidden">
       {/* Background decorative elements */}
-      <div
+      {/* <div
         className="absolute top-40 right-10 w-96 h-96 rounded-full opacity-10 blur-3xl"
         style={{ background: "var(--pastel-pink)" }}
       />
       <div
         className="absolute bottom-20 left-10 w-80 h-80 rounded-full opacity-10 blur-3xl"
         style={{ background: "var(--pastel-blue)" }}
-      />
+      /> */}
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header Section */}
@@ -80,9 +85,9 @@ export const About: React.FC = () => {
             <Sparkles className="w-6 h-6" style={{ color: "var(--pastel-yellow)" }} />
             <span style={{ color: "var(--pastel-yellow)" }}>About Me</span>
           </div>
-          <h1 className="text-5xl md:text-6xl mb-6">Crafting Digital Experiences</h1>
+          <h1 className="text-5xl md:text-6xl mb-6">Building Intelligent Systems</h1>
           <p className="text-xl text-white/60 max-w-3xl mx-auto">
-            A passionate engineer dedicated to building innovative solutions that bridge the gap between technology and user experience.
+            {/* A passionate engineer dedicated to building innovative solutions that bridge the gap between technology and user experience. */}
           </p>
         </motion.div>
 
@@ -94,21 +99,31 @@ export const About: React.FC = () => {
           className="mb-20"
         >
           <div className="bg-gradient-to-br from-card/50 to-card/30 backdrop-blur-sm border border-white/10 rounded-3xl p-12 relative overflow-hidden">
-            <div
+            {/* <div
               className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-20 blur-3xl"
               style={{ background: "var(--pastel-blue)" }}
-            />
+            /> */}
             <div className="relative z-10">
               <h2 className="text-3xl mb-6">My Journey</h2>
               <div className="space-y-4 text-lg text-white/70 leading-relaxed">
                 <p>
-                  With over 5 years of experience in software engineering and AI/ML, I've had the privilege of working on cutting-edge projects that push the boundaries of what's possible with technology.
+                  I’m a Computer Science and Applied Mathematics & Statistics student at Stony
+                  Brook University (GPA 3.96), with a strong interest in building practical,
+                  well-designed software and machine learning systems.
                 </p>
                 <p>
-                  My passion lies in creating intelligent systems that not only solve complex problems but also provide seamless user experiences. From building scalable web applications to training sophisticated machine learning models, I thrive on challenges that require both technical expertise and creative thinking.
+                  I’ve worked across academic research and industry internships, from computer
+                  vision and 3D data pipelines to training CNN-based models and building
+                  production-ready RAG systems for real-world use.
                 </p>
                 <p>
-                  When I'm not coding, you'll find me exploring the latest research papers, contributing to open-source projects, or mentoring aspiring developers in the tech community.
+                  I’m currently a Fellow in the Break Through Tech AI program at Cornell Tech,
+                  where I collaborate with engineers and mentors to design, evaluate, and
+                  deploy end-to-end ML systems.
+                </p>
+                <p>
+                  Outside of tech, I enjoy building productivity tools, staying involved in
+                  tech communities, playing basketball, and rock climbing.
                 </p>
               </div>
             </div>
@@ -173,7 +188,7 @@ export const About: React.FC = () => {
                     <span className="text-lg">{skill.name}</span>
                     <span className="text-sm text-white/50">{skill.level}%</span>
                   </div>
-                  <div className="h-3 bg-white/5 rounded-full overflow-hidden">
+                  {/* <div className="h-3 bg-white/5 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${skill.level}%` }}
@@ -181,7 +196,7 @@ export const About: React.FC = () => {
                       className="h-full rounded-full"
                       style={{ background: skill.color }}
                     />
-                  </div>
+                  </div> */}
                 </motion.div>
               ))}
             </div>

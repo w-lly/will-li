@@ -6,19 +6,19 @@ import type { RefObject, ReactNode } from "react";
 type SectionKey =
   | "home"
   | "about"
-  | "resume"
+  // | "resume"
   | "projects"
-  | "activities"
-  | "statistics"
+  // | "activities"
+  // | "statistics"
   | "contact";
 
 const navItems: { id: SectionKey; label: string; icon: React.ComponentType<any> }[] = [
   { id: "home", label: "Home", icon: Home },
   { id: "about", label: "About", icon: User },
-  { id: "resume", label: "Resume", icon: FileText },
+  // { id: "resume", label: "Resume", icon: FileText },
   { id: "projects", label: "Projects", icon: FolderOpen },
-  { id: "activities", label: "Activities", icon: Activity },
-  { id: "statistics", label: "Statistics", icon: BarChart3 },
+  // { id: "activities", label: "Activities", icon: Activity },
+  // { id: "statistics", label: "Statistics", icon: BarChart3 },
   { id: "contact", label: "Contact", icon: Mail },
 ];
 

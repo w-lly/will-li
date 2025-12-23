@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
 import type { MotionProps } from "motion/react";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import type { FC, HTMLAttributes } from "react";
+import profileImage from "../images/me.jpeg"
 
 // Common motion transition for sequential animations
 const fadeUpTransition: MotionProps["transition"] = { duration: 0.8 };
@@ -10,25 +11,19 @@ const fadeUpTransition: MotionProps["transition"] = { duration: 0.8 };
 // Contact icon configuration
 const contactLinks: { href: string; Icon: FC<HTMLAttributes<SVGElement>>; bg: string; color: string }[] = [
   {
-    href: "https://github.com",
+    href: "https://github.com/w-lly/",
     Icon: Github,
     bg: "rgba(168, 216, 234, 0.15)",
     color: "var(--pastel-blue)",
   },
   {
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/will-li-e271828/",
     Icon: Linkedin,
     bg: "rgba(255, 233, 167, 0.15)",
     color: "var(--pastel-yellow)",
   },
   {
-    href: "https://twitter.com",
-    Icon: Twitter,
-    bg: "rgba(255, 179, 217, 0.15)",
-    color: "var(--pastel-pink)",
-  },
-  {
-    href: "mailto:your.email@example.com",
+    href: "mailto:will.li.1@stonybrook.edu",
     Icon: Mail,
     bg: "rgba(168, 216, 234, 0.15)",
     color: "var(--pastel-blue)",
@@ -39,7 +34,7 @@ export const Home: FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
       {/* Animated background blobs */}
-      <motion.div
+      {/* <motion.div
         className="absolute top-20 right-20 w-96 h-96 rounded-full opacity-20 blur-3xl"
         style={{ background: "var(--pastel-blue)" }}
         animate={{ scale: [1, 1.2, 1], x: [0, 50, 0], y: [0, 30, 0] }}
@@ -56,7 +51,7 @@ export const Home: FC = () => {
         style={{ background: "var(--pastel-pink)" }}
         animate={{ scale: [1, 1.15, 1], rotate: [0, 180, 0] }}
         transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-      />
+      /> */}
 
       <div className="max-w-6xl w-full relative z-10">
         <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -68,7 +63,7 @@ export const Home: FC = () => {
             className="relative order-2 md:order-1"
           >
             {/* Decorative gradient layers */}
-            <div
+            {/* <div
               className="absolute -inset-4 rounded-[3rem] opacity-30 blur-xl"
               style={{
                 background: "linear-gradient(135deg, var(--pastel-blue), var(--pastel-pink))",
@@ -77,10 +72,10 @@ export const Home: FC = () => {
             <div
               className="absolute -inset-8 rounded-[4rem] opacity-20"
               style={{ background: "var(--pastel-yellow)", transform: "rotate(-6deg)" }}
-            />
+            /> */}
             <div className="relative rounded-[3rem] overflow-hidden border-4 border-white/10 shadow-2xl">
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1672685667592-0392f458f46f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdCUyMHBvcnRyYWl0fGVufDF8fHx8MTc2Mzg4NTE1NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src={profileImage}
                 alt="Profile"
                 className="w-full h-auto"
               />
@@ -95,7 +90,7 @@ export const Home: FC = () => {
             className="order-1 md:order-2 text-center md:text-left"
           >
             {/* Role Badge */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -103,7 +98,7 @@ export const Home: FC = () => {
               style={{ borderColor: "var(--pastel-blue)", background: "rgba(168, 216, 234, 0.1)" }}
             >
               <span style={{ color: "var(--pastel-blue)" }}>Software Engineer • AI/ML</span>
-            </motion.div>
+            </motion.div> */}
 
             {/* Name */}
             <motion.h1
@@ -112,18 +107,18 @@ export const Home: FC = () => {
               transition={{ delay: 0.4 }}
               className="text-6xl md:text-7xl mb-6 bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent"
             >
-              Your Name
+              Will Li
             </motion.h1>
 
             {/* Description */}
-            <motion.p
+            {/* <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
               className="text-xl mb-10 text-white/70 max-w-lg mx-auto md:mx-0"
             >
               Building intelligent systems and innovative solutions at the intersection of software engineering and machine learning.
-            </motion.p>
+            </motion.p> */}
 
             {/* Contact Icons */}
             <motion.div

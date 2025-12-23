@@ -11,10 +11,10 @@ import { Contact } from "./pages/Contact";
 type SectionKey =
   | "home"
   | "about"
-  | "resume"
+  // | "resume"
   | "projects"
-  | "activities"
-  | "statistics"
+  // | "activities"
+  // | "statistics"
   | "contact";
 
 type SectionConfig = {
@@ -26,20 +26,20 @@ export default function App() {
   const sectionRefs: Record<SectionKey, React.RefObject<HTMLDivElement>> = {
     home: useRef(null),
     about: useRef(null),
-    resume: useRef(null),
+    // resume: useRef(null),
     projects: useRef(null),
-    activities: useRef(null),
-    statistics: useRef(null),
+    // activities: useRef(null),
+    // statistics: useRef(null),
     contact: useRef(null),
   };
 
   const sections: SectionConfig[] = [
     { key: "home", Component: Home },
     { key: "about", Component: About },
-    { key: "resume", Component: Resume },
+    // { key: "resume", Component: Resume },
     { key: "projects", Component: Projects },
-    { key: "activities", Component: Activities },
-    { key: "statistics", Component: Statistics },
+    // { key: "activities", Component: Activities },
+    // { key: "statistics", Component: Statistics },
     { key: "contact", Component: Contact },
   ];
 
