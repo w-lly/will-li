@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Briefcase, GraduationCap, Award, Download } from "lucide-react";
-import type { FC, ReactNode } from "react";
+import type { FC } from "react";
 
 // ----------------------------
 // Data Types

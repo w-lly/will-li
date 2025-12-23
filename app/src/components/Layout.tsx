@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { Home, User, FileText, FolderOpen, Activity, BarChart3, Mail } from "lucide-react";
+import { Home, User, FolderOpen, Mail } from "lucide-react";
+// import { FileText, Activity, BarChart3 } from "lucide-react";
 import type { RefObject, ReactNode } from "react";
 
 type SectionKey =
@@ -24,8 +25,8 @@ const navItems: { id: SectionKey; label: string; icon: React.ComponentType<any> 
 
 interface LayoutProps {
   children: ReactNode;
-  scrollToSection: (ref: RefObject<HTMLDivElement>) => void;
-  sectionRefs: Record<SectionKey, RefObject<HTMLDivElement>>;
+  scrollToSection: (ref: RefObject<HTMLDivElement | null>) => void;
+  sectionRefs: Record<SectionKey, RefObject<HTMLDivElement | null>>;
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children, scrollToSection, sectionRefs }) => {

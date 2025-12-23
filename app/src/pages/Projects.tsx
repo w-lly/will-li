@@ -79,8 +79,8 @@ const projects: Project[] = [
     tech: ["React", "Vite", "Zustand", "Dexie.js", "React Router", "@dnd-kit/core", "@dnd-kit/sortable", "Tailwind CSS", "Lucide React"],
     github: "https://github.com/w-lly/sbu_hacks_2025",
     demo: "https://u-mi.vercel.app/",
-    stars: 189,
-    forks: 32,
+    stars: 0,
+    forks: 0,
     color: "var(--pastel-yellow)",
     image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800",
   },
@@ -94,8 +94,8 @@ const projects: Project[] = [
     tech: ["FastAPI", "Next.js", "Tailwind CSS", "Gemini API", "PyMuPDF", "python-docx", "React", "ReactMarkdown"],
     github: "https://github.com/w-lly/application-helper-ai",
     demo: "https://github.com/w-lly/application-helper-ai",
-    stars: 156,
-    forks: 28,
+    stars: 0,
+    forks: 0,
     color: "var(--pastel-pink)",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800",
   },
@@ -153,7 +153,7 @@ export function Projects() {
               className="bg-card/40 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden cursor-pointer group"
             >
               {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
+              {/* <div className="relative h-48 overflow-hidden">
                 <div
                   className="absolute inset-0 opacity-60"
                   style={{ background: `linear-gradient(135deg, ${project.color}40, transparent)` }}
@@ -165,7 +165,7 @@ export function Projects() {
                 >
                   Featured
                 </div>
-              </div>
+              </div> */}
 
               {/* Project Content */}
               <div className="p-6">

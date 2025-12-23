@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
-import { Mail, Send, Github, Linkedin, Twitter, MapPin, Phone } from "lucide-react";
-import { useState, ChangeEvent, FormEvent } from "react";
+import { Mail, Send, Github, Linkedin, MapPin } from "lucide-react";
+// import { Phone } from "lucide-react";
+import { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
 
 // Types
 interface FormData {

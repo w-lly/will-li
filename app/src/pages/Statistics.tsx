@@ -7,7 +7,6 @@ import {
   Award,
   Coffee,
 } from "lucide-react";
-import type { ReactNode } from "react";
 
 // ---------- Types ----------
 interface Stat {

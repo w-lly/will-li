@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Code, Users, BookOpen, Award, MessageSquare, Rocket } from "lucide-react";
-import type { ReactNode, ComponentType } from "react";
+import type { ComponentType } from "react";
 
 /** ------------------ Types ------------------ */
 interface Activity {

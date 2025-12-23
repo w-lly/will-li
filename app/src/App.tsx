@@ -2,20 +2,10 @@ import { useEffect, useRef, useCallback } from "react";
 import { Layout } from "./components/Layout";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
-import { Resume } from "./pages/Resume";
 import { Projects } from "./pages/Projects";
-import { Activities } from "./pages/Activities";
-import { Statistics } from "./pages/Statistics";
 import { Contact } from "./pages/Contact";
 
-type SectionKey =
-  | "home"
-  | "about"
-  // | "resume"
-  | "projects"
-  // | "activities"
-  // | "statistics"
-  | "contact";
+type SectionKey = "home" | "about" | "projects" | "contact";
 
 type SectionConfig = {
   key: SectionKey;
@@ -23,28 +13,25 @@ type SectionConfig = {
 };
 
 export default function App() {
-  const sectionRefs: Record<SectionKey, React.RefObject<HTMLDivElement>> = {
-    home: useRef(null),
-    about: useRef(null),
-    // resume: useRef(null),
-    projects: useRef(null),
-    // activities: useRef(null),
-    // statistics: useRef(null),
-    contact: useRef(null),
+  const sectionRefs: Record<
+    SectionKey,
+    React.RefObject<HTMLDivElement | null>
+  > = {
+    home: useRef<HTMLDivElement | null>(null),
+    about: useRef<HTMLDivElement | null>(null),
+    projects: useRef<HTMLDivElement | null>(null),
+    contact: useRef<HTMLDivElement | null>(null),
   };
 
   const sections: SectionConfig[] = [
     { key: "home", Component: Home },
     { key: "about", Component: About },
-    // { key: "resume", Component: Resume },
     { key: "projects", Component: Projects },
-    // { key: "activities", Component: Activities },
-    // { key: "statistics", Component: Statistics },
     { key: "contact", Component: Contact },
   ];
 
   const scrollToSection = useCallback(
-    (ref: React.RefObject<HTMLDivElement>) => {
+    (ref: React.RefObject<HTMLDivElement | null>) => {
       ref.current?.scrollIntoView({ behavior: "smooth" });
     },
     []
@@ -59,7 +46,8 @@ export default function App() {
     scrollFromHash();
     window.addEventListener("hashchange", scrollFromHash);
 
-    return () => window.removeEventListener("hashchange", scrollFromHash);
+    return () =>
+      window.removeEventListener("hashchange", scrollFromHash);
   }, [sectionRefs]);
 
   return (

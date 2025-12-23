@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
-import { Code2, Brain, Database, Cloud, Sparkles, Zap } from "lucide-react";
+import { Code2, Brain, Database, Cloud, Sparkles } from "lucide-react";
 
 // Define type for a skill
 interface Skill {
