@@ -1,0 +1,229 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root block below holds the site's actual palette. Will's portfolio uses
+ * exactly four colors: #222222, #7B7B7B, #F8F8F8 and #FFFFFF.
+ */
+
+@theme inline {
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+}
+
+:root {
+  --font-size: 16px;
+  --radius: 0.75rem;
+
+  /* Will's four colors */
+  --background: #f8f8f8;
+  --foreground: #222222;
+  --surface: #ffffff;
+  --muted: #7b7b7b;
+
+  --card: #ffffff;
+  --card-foreground: #222222;
+  --popover: #ffffff;
+  --popover-foreground: #222222;
+  --primary: #222222;
+  --primary-foreground: #ffffff;
+  --secondary: #f8f8f8;
+  --secondary-foreground: #222222;
+  --muted-foreground: #7b7b7b;
+  --accent: #f8f8f8;
+  --accent-foreground: #222222;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: #e6e6e6;
+  --input: #e6e6e6;
+  --input-background: #ffffff;
+  --switch-background: #cfcfcf;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #7b7b7b66;
+  --chart-1: #222222;
+  --chart-2: #7b7b7b;
+  --chart-3: #a8a8a8;
+  --chart-4: #d5d5d5;
+  --chart-5: #f8f8f8;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #222222;
+  --sidebar-primary: #222222;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f8f8f8;
+  --sidebar-accent-foreground: #222222;
+  --sidebar-border: #e6e6e6;
+  --sidebar-ring: #7b7b7b66;
+}
+
+html {
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+  --header-height: 4rem;
+  scroll-padding-top: var(--header-height);
+}
+
+/* Enable after the sticky header is measured to avoid an initial page jump.
+ * Native snapping allows free scrolling inside sections taller than the screen. */
+html[data-snap-ready="true"] {
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Each section sticks to the top of the viewport when scrolling settles. */
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+.portfolio-container {
+  width: min(100% - 3rem, 76rem);
+  margin-inline: auto;
+}
+
+.hero {
+  height: calc(100svh - var(--header-height));
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.hero-content {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-block: 1.5rem 1rem;
+}
+
+.hero-copy { min-width: 0; align-self: center; }
+.hero-name { font-size: 3rem; line-height: 1; letter-spacing: 0; }
+.hero-tagline { margin-top: 1rem; font-size: 1rem; line-height: 1.5; }
+.hero-links { margin-top: 1.25rem; }
+.hero-photo {
+  min-height: 0;
+  width: min(100%, 19rem);
+  height: 100%;
+  max-height: 34rem;
+  justify-self: center;
+  align-self: center;
+}
+.hero-photo-framed { padding: 0.5rem; border-radius: 0.25rem; }
+.hero-scroll { padding-block: 0.25rem 0.75rem; }
+
+@media (min-width: 40rem) {
+  .portfolio-container { width: min(100% - 5rem, 76rem); }
+  .hero-content {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    gap: 2rem;
+    padding-block: 2rem;
+  }
+  .hero-name { font-size: 4.5rem; }
+  .hero-tagline { max-width: 22rem; font-size: 1.25rem; }
+  .hero-links { margin-top: 2rem; }
+  .hero-photo { width: 100%; max-width: 28rem; }
+}
+
+@media (min-width: 64rem) {
+  .hero-content { gap: 4rem; padding-block: 3rem; }
+  .hero-name { font-size: 6rem; }
+  .hero-tagline { font-size: 1.5rem; }
+}
+
+@media (min-width: 80rem) {
+  .hero-name { font-size: 8rem; }
+}
+
+@media (max-height: 32rem) and (orientation: landscape) {
+  .hero-content {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    padding-block: 1rem;
+  }
+  .hero-name { font-size: 3rem; }
+  .hero-tagline { margin-top: 0.5rem; font-size: 1rem; }
+  .hero-links { margin-top: 0.75rem; }
+}
+
+/* The hero's whitish grid. */
+.grid-bg {
+  background-color: var(--background);
+  background-image:
+    linear-gradient(#ebebeb 1px, transparent 1px),
+    linear-gradient(90deg, #ebebeb 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html, html[data-snap-ready="true"] {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+}
+
+@layer base {
+  * { border-color: var(--color-border); outline-color: var(--ring); }
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) h1 { font-size: var(--text-2xl); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) h2 { font-size: var(--text-xl); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) h3 { font-size: var(--text-lg); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) h4 { font-size: var(--text-base); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) p { font-size: var(--text-base); font-weight: var(--font-weight-normal); line-height: 1.5; }
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) label,
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) button { font-size: var(--text-base); font-weight: var(--font-weight-medium); line-height: 1.5; }
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) input { font-size: var(--text-base); font-weight: var(--font-weight-normal); line-height: 1.5; }
+}

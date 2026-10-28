@@ -1,0 +1,4 @@
+[{"capability":"code","source":"Vite React single-page portfolio","outcome":"migrate","status":"done","next_action":"none"},
+{"capability":"assets","source":"src/images/me.jpeg","outcome":"migrate","status":"done","next_action":"none"},
+{"capability":"database/auth/records","source":"none detected","outcome":"absent","status":"verified","next_action":"none"},
+{"capability":"contact form","source":"Contact.tsx alert stub, not connected","outcome":"preserve as-is","status":"done","next_action":"optional: wire up email sending"}]

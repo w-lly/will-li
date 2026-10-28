@@ -1,0 +1,68 @@
+[
+  {
+    "name": "will-li",
+    "description": null,
+    "url": "https://github.com/w-lly/will-li",
+    "homepage": "https://will-li.vercel.app",
+    "language": "TypeScript",
+    "stars": 0,
+    "updatedAt": "2025-12-23T04:57:45Z",
+    "fork": false,
+    "archived": false
+  },
+  {
+    "name": "sbu_hacks_2025",
+    "description": null,
+    "url": "https://github.com/w-lly/sbu_hacks_2025",
+    "homepage": "https://u-mi.vercel.app",
+    "language": "JavaScript",
+    "stars": 0,
+    "updatedAt": "2025-12-09T22:36:13Z",
+    "fork": false,
+    "archived": false
+  },
+  {
+    "name": "Agentic-AI-for-Insights",
+    "description": null,
+    "url": "https://github.com/w-lly/Agentic-AI-for-Insights",
+    "homepage": "https://huggingface.co/spaces/w-lly/Agentic-AI-for-Insights-App",
+    "language": "Jupyter Notebook",
+    "stars": 1,
+    "updatedAt": "2025-12-08T19:31:26Z",
+    "fork": false,
+    "archived": false
+  },
+  {
+    "name": "w-lly",
+    "description": null,
+    "url": "https://github.com/w-lly/w-lly",
+    "homepage": null,
+    "language": null,
+    "stars": 0,
+    "updatedAt": "2025-11-23T02:33:56Z",
+    "fork": false,
+    "archived": false
+  },
+  {
+    "name": "application-helper-ai",
+    "description": null,
+    "url": "https://github.com/w-lly/application-helper-ai",
+    "homepage": null,
+    "language": "JavaScript",
+    "stars": 0,
+    "updatedAt": "2025-08-17T07:39:50Z",
+    "fork": false,
+    "archived": false
+  },
+  {
+    "name": "marital-status-prediction",
+    "description": null,
+    "url": "https://github.com/w-lly/marital-status-prediction",
+    "homepage": null,
+    "language": "Jupyter Notebook",
+    "stars": 0,
+    "updatedAt": "2025-08-03T02:01:11Z",
+    "fork": false,
+    "archived": false
+  }
+]
