@@ -8,6 +8,7 @@
 | Shown repos, order, card titles, blurbs | `src/content/projects.ts` |
 | Display settings (e.g. hero photo frame) | `src/content/settings.ts` |
 | Profile photo | `src/assets/images/profile-photo.jpeg` (replace, keep the name) |
+| Browser tab icon | `src/assets/images/favicon.png` (64×64) and `src/assets/images/apple-touch-icon.png` (180×180) — replace, keep the names |
 | Colors, font, spacing | `src/styles.css` |
 | Section layout | `src/components/<Section>.tsx` |
 

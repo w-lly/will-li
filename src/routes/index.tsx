@@ -19,13 +19,13 @@ const projectsQuery = queryOptions({
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Will Li — Software Engineer" },
+      { title: "Will Li" },
       {
         name: "description",
         content:
           "Will Li builds software end to end — from backend services and data pipelines to clean, fast interfaces. Projects, experience and contact.",
       },
-      { property: "og:title", content: "Will Li — Software Engineer" },
+      { property: "og:title", content: "Will Li" },
       {
         property: "og:description",
         content:
