@@ -20,7 +20,10 @@ function repo(name: string, over: Partial<GitHubRepo> = {}): GitHubRepo {
 const sample = [
   repo("will-li", { homepage: "https://will-li.vercel.app" }),
   repo("w-lly"),
-  repo("marital-status-prediction", { updatedAt: "2025-08-03T00:00:00Z", language: "Jupyter Notebook" }),
+  repo("marital-status-prediction", {
+    updatedAt: "2025-08-03T00:00:00Z",
+    language: "Jupyter Notebook",
+  }),
   repo("application-helper-ai", { updatedAt: "2025-08-17T00:00:00Z" }),
   repo("Agentic-AI-for-Insights", {
     updatedAt: "2025-12-08T00:00:00Z",
@@ -75,7 +78,10 @@ describe("project curation", () => {
 
   it("falls back to GitHub's description when no blurb is written", () => {
     const config = { ...projectsConfig, blurbs: {} };
-    const [card] = selectProjects([repo("sbu_hacks_2025", { description: "From GitHub." })], config);
+    const [card] = selectProjects(
+      [repo("sbu_hacks_2025", { description: "From GitHub." })],
+      config,
+    );
     expect(card?.blurb).toBe("From GitHub.");
   });
 

@@ -8,7 +8,9 @@ const OUT = new URL("../src/content/projects.snapshot.json", import.meta.url);
 const headers = { Accept: "application/vnd.github+json" };
 if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
-const res = await fetch(`https://api.github.com/users/${USER}/repos?per_page=100&sort=updated`, { headers });
+const res = await fetch(`https://api.github.com/users/${USER}/repos?per_page=100&sort=updated`, {
+  headers,
+});
 if (!res.ok) {
   console.error(`GitHub request failed: ${res.status} ${res.statusText}`);
   process.exit(1);

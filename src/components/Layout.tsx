@@ -12,14 +12,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
     const apply = () => {
       const h = headerRef.current?.offsetHeight ?? 0;
       document.documentElement.style.setProperty("--header-height", `${h}px`);
-      document.documentElement.dataset['snapReady'] = "true";
+      document.documentElement.dataset["snapReady"] = "true";
     };
     apply();
     const observer = new ResizeObserver(apply);
     if (headerRef.current) observer.observe(headerRef.current);
     return () => {
       observer.disconnect();
-      delete document.documentElement.dataset['snapReady'];
+      delete document.documentElement.dataset["snapReady"];
       document.documentElement.style.removeProperty("--header-height");
     };
   }, []);

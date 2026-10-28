@@ -32,8 +32,7 @@ export const projectsConfig = {
   blurbs: {
     "Agentic-AI-for-Insights":
       "Agentic AI that turns raw data into plain-language insights, shipped as a live demo app.",
-    sbu_hacks_2025:
-      "Hackathon build: a web app put together over a weekend, with a deployed demo.",
+    sbu_hacks_2025: "Hackathon build: a web app put together over a weekend, with a deployed demo.",
     "application-helper-ai":
       "AI assistant that helps applicants draft and review application materials.",
     "marital-status-prediction":
@@ -69,15 +68,10 @@ export type ProjectCard = {
  * Only repos named in `order` survive, in that order.
  * Pure function — no fetching, no browser APIs — so it can be tested directly.
  */
-export function selectProjects(
-  repos: GitHubRepo[],
-  config: typeof projectsConfig,
-): ProjectCard[] {
+export function selectProjects(repos: GitHubRepo[], config: typeof projectsConfig): ProjectCard[] {
   const hidden = new Set(config.hidden);
   const byName = new Map(
-    repos
-      .filter((r) => !r.fork && !r.archived && !hidden.has(r.name))
-      .map((r) => [r.name, r]),
+    repos.filter((r) => !r.fork && !r.archived && !hidden.has(r.name)).map((r) => [r.name, r]),
   );
 
   const picked: GitHubRepo[] = [];

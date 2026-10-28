@@ -26,8 +26,7 @@ function toRepos(payload: unknown): GitHubRepo[] {
       name: String(r["name"] ?? ""),
       description: typeof r["description"] === "string" ? r["description"] : null,
       url: String(r["html_url"] ?? ""),
-      homepage:
-        typeof r["homepage"] === "string" && r["homepage"] ? String(r["homepage"]) : null,
+      homepage: typeof r["homepage"] === "string" && r["homepage"] ? String(r["homepage"]) : null,
       language: typeof r["language"] === "string" ? String(r["language"]) : null,
       stars: Number(r["stargazers_count"] ?? 0),
       updatedAt: String(r["updated_at"] ?? ""),

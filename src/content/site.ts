@@ -41,16 +41,7 @@ export const about = {
     "Computer Science student at Stony Brook University. I work across the stack, from backend services and data pipelines to clean, fast interfaces. Currently interested in AI/ML systems and developer tooling.",
   ],
   skillsLabel: "Languages & tools",
-  skills: [
-    "Python",
-    "Java",
-    "C",
-    "JavaScript",
-    "React",
-    "FastAPI",
-    "PyTorch",
-    "Docker",
-  ],
+  skills: ["Python", "Java", "C", "JavaScript", "React", "FastAPI", "PyTorch", "Docker"],
 };
 
 /** 03 — Projects. Curation (order, hidden repos, one-line blurbs) is in projects.ts. */
