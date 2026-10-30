@@ -12,3 +12,4 @@
 - Keep editable experience entries, locations, accomplishment arrays, and skills in the central content file so wording changes do not require component edits.
 - Keep simple presentation toggles in src/content/settings.ts, separate from biography and experience text.
 - Use viewport-sized flow grids for the hero and native mandatory document snapping after measuring the sticky header; oversized sections remain freely scrollable without wheel interception.
+- Track the active section at the measured sticky header edge with passive, animation-frame-coalesced scroll reads; treat document bottom as Contact so short closing sections can become active.
