@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 
-import { selectProjects, projectsConfig, formatUpdated, type GitHubRepo } from "@/content/projects";
+import {
+  selectProjects,
+  projectsConfig,
+  formatUpdated,
+  repositoryPath,
+  type GitHubRepo,
+} from "@/content/projects";
 
 function repo(name: string, over: Partial<GitHubRepo> = {}): GitHubRepo {
   return {
@@ -40,6 +46,35 @@ const names = (repos: GitHubRepo[], config = projectsConfig) =>
   selectProjects(repos, config).map((c) => c.name);
 
 describe("project curation", () => {
+  it("defaults repository ownership to w-lly", () => {
+    expect(repositoryPath("sbu_hacks_2025")).toBe("w-lly/sbu_hacks_2025");
+  });
+
+  it("selects the configured collaborator repository without matching same-named repos", () => {
+    const config = {
+      ...projectsConfig,
+      order: ["team"],
+      sources: { team: "https://github.com/collaborator/shared" },
+    };
+    const cards = selectProjects(
+      [
+        repo("shared"),
+        repo("shared", {
+          url: "https://github.com/collaborator/shared",
+          homepage: "https://example.com",
+        }),
+      ],
+      config,
+    );
+    expect(cards.map((card) => card.url)).toEqual(["https://github.com/collaborator/shared"]);
+    expect(cards[0]?.demo).toBe("https://example.com");
+  });
+
+  it("rejects non-GitHub override URLs", () => {
+    expect(() =>
+      repositoryPath("team", { ...projectsConfig, sources: { team: "https://example.com/repo" } }),
+    ).toThrow();
+  });
   it("shows exactly the repos listed in order, nothing else", () => {
     expect(names(sample)).toEqual([
       "Agentic-AI-for-Insights",

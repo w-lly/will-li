@@ -13,3 +13,7 @@
 - Keep simple presentation toggles in src/content/settings.ts, separate from biography and experience text.
 - Use viewport-sized flow grids for the hero and native mandatory document snapping after measuring the sticky header; oversized sections remain freely scrollable without wheel interception.
 - Track the active section at the measured sticky header edge with passive, animation-frame-coalesced scroll reads; treat document bottom as Contact so short closing sections can become active.
+- Initialize navigation with no active item until measuring the viewport; this avoids incorrect SSR selection during scroll restoration.
+- Resolve configured project keys to validated full GitHub repository paths before selection and fetching, including in the snapshot script; this avoids name collisions across owners.
+- Resolve local project images using Vite's asset glob and reveal a persistent sibling overlay through native disclosure plus hover/focus; keeping the overlay outside collapsed details allows smooth transitions without timers or extra dependencies.
+- Persist custom GitHub social-preview URLs with repository snapshots during the refresh script and reuse them for live and fallback records; this avoids repeated HTML requests while keeping images portable on GitHub's CDN.

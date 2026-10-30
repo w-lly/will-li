@@ -5,7 +5,7 @@ import { activeSection } from "@/lib/active-section";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const headerRef = useRef<HTMLElement | null>(null);
-  const [active, setActive] = useState("home");
+  const [active, setActive] = useState<string | null>(null);
 
   // Keep snapped sections and #anchor jumps clear of the sticky bar: the bar's
   // height changes with the breakpoint, so it is measured rather than guessed.
@@ -31,19 +31,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
     };
     const apply = () => {
       const h = headerRef.current?.offsetHeight ?? 0;
-      document.documentElement.style.setProperty("--header-height", `${h}px`);
+      if (document.documentElement.style.getPropertyValue("--header-height") !== `${h}px`) {
+        document.documentElement.style.setProperty("--header-height", `${h}px`);
+      }
       document.documentElement.dataset["snapReady"] = "true";
       schedule();
     };
     apply();
-    const observer = new ResizeObserver(apply);
+    const observer = new ResizeObserver(() => window.requestAnimationFrame(apply));
     if (headerRef.current) observer.observe(headerRef.current);
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
+    window.addEventListener("pageshow", schedule);
     return () => {
       observer.disconnect();
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
+      window.removeEventListener("pageshow", schedule);
       if (frame !== undefined) window.cancelAnimationFrame(frame);
       delete document.documentElement.dataset["snapReady"];
       document.documentElement.style.removeProperty("--header-height");

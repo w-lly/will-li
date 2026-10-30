@@ -18,4 +18,13 @@
 
 ## Open
 
+- [x] Preserve available GitHub social previews during the project refresh command
+- [x] Replace fallback tint with adjustable opacity, dashed image border, and "No preview yet" caption; verify and document
+
+- [x] Add configurable fallback-only image whitening and short smooth project-detail transitions; verify hover and touch
+
+- [x] Prevent placeholder Home selection on refresh
+- [x] Add optional collaborator repository URLs and image-first project cards with configurable image fallback
+- [x] Document the new settings and verify navigation, cards, and repository selection
+
 - [ ] Contact form still only shows a "not connected yet" message — needs a decision on what it should do

@@ -164,6 +164,36 @@ body {
 .hero-photo-framed { padding: 0.5rem; border-radius: 0.25rem; }
 .hero-scroll { padding-block: 0.25rem 0.75rem; }
 
+.project-card { overflow: hidden; min-width: 0; }
+.project-disclosure { position: relative; }
+.project-cover { display: block; position: relative; aspect-ratio: 16 / 10; background: var(--surface); }
+.project-cover::-webkit-details-marker { display: none; }
+.project-preview-label { pointer-events: none; }
+.project-details {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 180ms ease-out, visibility 180ms;
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  pointer-events: none;
+}
+.project-disclosure:has(details[open]) .project-details,
+.project-disclosure:has(summary:focus-visible) .project-details {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover .project-details {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+}
+.project-disclosure:has(details[open]) .project-details { pointer-events: auto; }
+
+
 @media (min-width: 40rem) {
   .portfolio-container { width: min(100% - 5rem, 76rem); }
   .hero-content {
@@ -209,6 +239,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .project-details { transition: none; }
   html, html[data-snap-ready="true"] {
     scroll-behavior: auto;
     scroll-snap-type: none;

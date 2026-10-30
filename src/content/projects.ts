@@ -27,6 +27,10 @@ export const projectsConfig = {
     "marital-status-prediction",
   ],
   hidden: [] as string[],
+  /** Optional full repository URLs, keyed by the entry in order. */
+  sources: {} as Record<string, string>,
+  /** Optional filenames relative to src/assets/images (e.g. projects/u-mi.png). */
+  images: {} as Record<string, string>,
   /** Card headings. Missing entry = the repo's own GitHub name. */
   titles: {} as Record<string, string>,
   blurbs: {
@@ -41,6 +45,7 @@ export const projectsConfig = {
 };
 
 export type GitHubRepo = {
+  socialPreview?: string | null;
   name: string;
   description: string | null;
   url: string;
@@ -53,6 +58,8 @@ export type GitHubRepo = {
 };
 
 export type ProjectCard = {
+  image: string | null;
+  socialPreview: string | null;
   name: string;
   title: string;
   blurb: string;
@@ -70,27 +77,41 @@ export type ProjectCard = {
  */
 export function selectProjects(repos: GitHubRepo[], config: typeof projectsConfig): ProjectCard[] {
   const hidden = new Set(config.hidden);
-  const byName = new Map(
-    repos.filter((r) => !r.fork && !r.archived && !hidden.has(r.name)).map((r) => [r.name, r]),
+  const byUrl = new Map(
+    repos.filter((r) => !r.fork && !r.archived).map((r) => [r.url.toLowerCase(), r]),
   );
 
-  const picked: GitHubRepo[] = [];
+  const picked: { key: string; repo: GitHubRepo }[] = [];
   for (const name of config.order) {
     if (hidden.has(name)) continue;
-    const found = byName.get(name);
-    if (found) picked.push(found);
+    const source = repositoryPath(name, config);
+    const found = byUrl.get(`https://github.com/${source}`.toLowerCase());
+    if (found) picked.push({ key: name, repo: found });
   }
 
-  return picked.map((r) => ({
-    name: r.name,
-    title: config.titles[r.name] || r.name,
-    blurb: config.blurbs[r.name] || r.description || "No description yet.",
+  return picked.map(({ key, repo: r }) => ({
+    name: key,
+    image: config.images[key] || null,
+    socialPreview: r.socialPreview ?? null,
+    title: config.titles[key] || r.name,
+    blurb: config.blurbs[key] || r.description || "No description yet.",
     url: r.url,
     demo: r.homepage,
     language: r.language,
     stars: r.stars,
     updatedAt: r.updatedAt,
   }));
+}
+
+/** Restrict overrides to public GitHub repository URLs, never arbitrary fetch targets. */
+export function repositoryPath(key: string, config = projectsConfig): string {
+  const override = config.sources[key];
+  if (!override) return `w-lly/${key}`;
+  const match = /^https:\/\/github\.com\/([\w-]+)\/([\w.-]+)\/?$/.exec(override);
+  if (!match || match[2] === "." || match[2] === "..") {
+    throw new Error(`Invalid GitHub repository URL for ${key}`);
+  }
+  return `${match[1]}/${match[2]}`;
 }
 
 /** "2025-12-08T20:52:53Z" -> "Dec 2025" */

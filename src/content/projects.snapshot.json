@@ -6,7 +6,7 @@
     "homepage": "https://will-li.vercel.app",
     "language": "TypeScript",
     "stars": 0,
-    "updatedAt": "2025-12-23T04:57:45Z",
+    "updatedAt": "2026-10-30T04:31:04Z",
     "fork": false,
     "archived": false
   },
@@ -19,7 +19,8 @@
     "stars": 0,
     "updatedAt": "2025-12-09T22:36:13Z",
     "fork": false,
-    "archived": false
+    "archived": false,
+    "socialPreview": "https://repository-images.githubusercontent.com/1092200611/b8604c7a-fdc5-43c6-9871-8deffad830f6"
   },
   {
     "name": "Agentic-AI-for-Insights",
@@ -30,7 +31,8 @@
     "stars": 1,
     "updatedAt": "2025-12-08T19:31:26Z",
     "fork": false,
-    "archived": false
+    "archived": false,
+    "socialPreview": "https://repository-images.githubusercontent.com/1047014015/361f233d-fe11-481f-b7ae-494114b201f4"
   },
   {
     "name": "w-lly",
@@ -52,7 +54,8 @@
     "stars": 0,
     "updatedAt": "2025-08-17T07:39:50Z",
     "fork": false,
-    "archived": false
+    "archived": false,
+    "socialPreview": null
   },
   {
     "name": "marital-status-prediction",
@@ -63,6 +66,7 @@
     "stars": 0,
     "updatedAt": "2025-08-03T02:01:11Z",
     "fork": false,
-    "archived": false
+    "archived": false,
+    "socialPreview": null
   }
 ]

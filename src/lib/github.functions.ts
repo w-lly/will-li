@@ -2,6 +2,10 @@ import { createServerFn } from "@tanstack/react-start";
 
 import type { GitHubRepo } from "@/content/projects";
 import snapshot from "@/content/projects.snapshot.json";
+import { projectsConfig, repositoryPath } from "@/content/projects";
+import { settings } from "@/content/settings";
+import { githubSocialPreview } from "@/lib/github-preview";
+import { localProjectImage } from "@/lib/project-images";
 
 /**
  * GitHub fetch with a short-lived cache and a bundled fallback.
@@ -32,6 +36,10 @@ function toRepos(payload: unknown): GitHubRepo[] {
       updatedAt: String(r["updated_at"] ?? ""),
       fork: Boolean(r["fork"]),
       archived: Boolean(r["archived"]),
+      socialPreview:
+        (snapshot as GitHubRepo[]).find(
+          (saved) => saved.url.toLowerCase() === String(r["html_url"] ?? "").toLowerCase(),
+        )?.socialPreview ?? null,
     }))
     .filter((r) => r.name && r.url);
 }
@@ -51,6 +59,7 @@ export const getGitHubProjects = createServerFn({ method: "GET" }).handler(
     try {
       const res = await fetch(`${GITHUB_API}/users/${OWNER}/repos?per_page=100&sort=updated`, {
         headers,
+        signal: AbortSignal.timeout(5000),
       });
       if (!res.ok) {
         const body = await res.text();
@@ -59,6 +68,53 @@ export const getGitHubProjects = createServerFn({ method: "GET" }).handler(
       }
       const repos = toRepos(await res.json());
       if (repos.length === 0) throw new Error("GitHub returned no repositories");
+      const extras = await Promise.all(
+        projectsConfig.order
+          .filter((key) => projectsConfig.sources[key] && !projectsConfig.hidden.includes(key))
+          .map(async (key) => {
+            const path = repositoryPath(key);
+            try {
+              const response = await fetch(`${GITHUB_API}/repos/${path}`, {
+                headers,
+                signal: AbortSignal.timeout(5000),
+              });
+              if (!response.ok)
+                throw new Error(
+                  `GitHub repository request failed [${response.status}]: ${await response.text()}`,
+                );
+              return toRepos([await response.json()]);
+            } catch (error) {
+              console.error(error);
+              return (snapshot as GitHubRepo[]).filter(
+                (repo) => repo.url.toLowerCase() === `https://github.com/${path}`.toLowerCase(),
+              );
+            }
+          }),
+      );
+      repos.push(...extras.flat());
+      if (settings.projects.useSocialPreview) {
+        await Promise.all(
+          projectsConfig.order
+            .filter(
+              (key) =>
+                !projectsConfig.hidden.includes(key) &&
+                !localProjectImage(projectsConfig.images[key] ?? null),
+            )
+            .map(async (key) => {
+              const url = `https://github.com/${repositoryPath(key)}`;
+              const repo = repos.find((item) => item.url.toLowerCase() === url.toLowerCase());
+              if (!repo) return;
+              // Refresh stores previews in the snapshot; avoid re-querying HTML for saved ones.
+              if (repo.socialPreview) return;
+              try {
+                const page = await fetch(url, { signal: AbortSignal.timeout(3000) });
+                if (page.ok) repo.socialPreview = githubSocialPreview(await page.text());
+              } catch {
+                repo.socialPreview = null;
+              }
+            }),
+        );
+      }
       cache = { at: now, repos };
       return repos;
     } catch (error) {
