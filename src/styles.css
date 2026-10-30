@@ -68,6 +68,7 @@
   --foreground: #222222;
   --surface: #ffffff;
   --muted: #7b7b7b;
+  --grid-line: color-mix(in srgb, var(--muted) 10%, var(--background));
 
   --card: #ffffff;
   --card-foreground: #222222;
@@ -233,10 +234,17 @@ body {
 .grid-bg {
   background-color: var(--background);
   background-image:
-    linear-gradient(#ebebeb 1px, transparent 1px),
-    linear-gradient(90deg, #ebebeb 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 64px 64px;
+  background-origin: border-box;
 }
+
+/* Continue the header's grid phase instead of restarting it at Home's top. */
+.hero.grid-bg { background-position: 0 calc(-1 * var(--header-height)); }
+
+/* Keep the border's space so blending never changes the page geometry. */
+.portfolio-header:not([data-home-settled="false"]) { border-bottom-color: transparent; }
 
 @media (prefers-reduced-motion: reduce) {
   .project-details { transition: none; }
