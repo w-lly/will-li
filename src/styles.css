@@ -244,7 +244,7 @@ body {
 .hero.grid-bg { background-position: 0 calc(-1 * var(--header-height)); }
 
 /* Keep the border's space so blending never changes the page geometry. */
-.portfolio-header:not([data-home-settled="false"]) { border-bottom-color: transparent; }
+.portfolio-header[data-home-section="true"] { border-bottom-color: transparent; }
 
 @media (prefers-reduced-motion: reduce) {
   .project-details { transition: none; }
